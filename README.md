@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# My React Firebase Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Project Live Link](https://root-array-429313-q8.web.app)
 
-## Available Scripts
 
-In the project directory, you can run:
+This project is a web application built using React and Firebase. The app includes an authentication system, role-based routing, and a form submission feature. The application is deployed on Firebase Hosting.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **User Authentication:** Login and registration using Firebase Authentication.
+- **Role-Based Routing:** Admin, staff, and user dashboards are protected with role-based access.
+- **Form Submission:** Users can apply for services.
+- **Admin:** Admin can create staff login id, create new servie and manage it, view application and update the application status.
+- **Staff:** Staff can view application and update the application status.
+- **User:** User can view Services and apply for the service they wish to.
+- **Firebase Integration:** The app uses Firebase Firestore for storing data and Firebase Hosting for deployment.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Structure
 
-### `npm test`
+```plaintext
+root-directory/
+│
+├── public/               # Static files like index.html
+├── src/                  # Source files
+│   ├── components/       # React components
+│   ├── firebase/         # Firebase config and hooks
+│   ├── App.js            # Main app component
+│   ├── index.js          # ReactDOM render and router setup
+│   └── ...
+│
+├── .firebaserc           # Firebase project configuration
+├── firebase.json         # Firebase hosting configuration
+├── package.json          # Node.js dependencies and scripts
+└── README.md             # This README file
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Git Clone
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Install Dependencies
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Setup .env
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Run Application
+npm start
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Buil for Production
+npm run build
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Deployement
+npm install -g firebase-tools
+firebase login
+firebase init
+firebase deploy
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Known Issues
+404 Page Not Found Error: If you encounter a 404 error for non-root routes, ensure that your firebase.json file includes the appropriate rewrites rule.
+json
+Copy code
+{
+  "hosting": {
+    "public": "build",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is licensed under the MIT License.
+You can place this `README.md` file in the root of your project directory. It covers the key aspects of your project, including installation, deployment, and other important information. Customize it further to fit the specific details of your project.
