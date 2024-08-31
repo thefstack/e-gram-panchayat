@@ -66,7 +66,6 @@ export const loginAdmin =async (email, password) => {
 const findUser=async(email)=>{
   const userDocRef = doc(db, 'users', email); // Assuming email is the document ID
   const userDoc = await getDoc(userDocRef);
-  console.log(userDoc)
   if(userDoc._document.data.value.mapValue.fields.role.stringValue==='admin'){
     return "admin"
   }else if(userDoc._document.data.value.mapValue.fields.role.stringValue==='staff'){
@@ -220,3 +219,17 @@ export const registerStaff = async(email, password, data) => {
     return false;
   }
 };
+
+export const fetchProfile =async (user) => {
+  try{
+    // Fetch user data from Firestore by email (document ID)
+    const querySnapshot = await getDocs(collection(db, 'users'));
+    const res= querySnapshot.docs.map(doc => doc.data());
+    const data=res.find((item)=>item.email==user.email)
+    return data;
+
+  }catch(e){
+   console.log("Error in profile fetching ",e)
+  }
+   
+ };

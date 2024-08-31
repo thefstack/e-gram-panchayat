@@ -12,11 +12,9 @@ function useAuth() {
     useEffect(() => {
         onAuthStateChanged(auth, async (user) => {
             if (user) {
-                console.log(user.email)
                 const userDoc = await getDoc(doc(db, 'users', user.email));
                 await setUser(user);
                 await setRole(userDoc.data()?.role || 'user');
-            console.log(role)
             } else {
                 setUser(null);
                 setRole(null);
